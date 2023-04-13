@@ -12,8 +12,17 @@ const Formulario = (props) => {
     const [time, setTime] = useState('')
 
     const aoSalvar = (e) => {
-        e.preventDefault();
-        console.log("Formulario Enviado =>", nome, cargo, imagem, time)
+        e.preventDefault()
+        props.aoColaboradorCadastrado({
+            nome,
+            cargo,
+            imagem,
+            time
+        })
+        setNome('')
+        setCargo('')
+        setImagem('')
+        setTime('')
     }
 
     return (
@@ -31,17 +40,20 @@ const Formulario = (props) => {
                     required={true}
                     label="Cargo"
                     placeholder="Digite seu cargo"
+                    valor={cargo}
                     aoAlterado={valor => setCargo(valor)}
                 />
                 <CampoTexto
                     label="Imagem"
                     placeholder="Digite o URL da imagem"
+                    valor={imagem}
                     aoAlterado={valor => setImagem(valor)}
                 />
                 <ListaSuspensa
                     required={true}
                     label="Time"
                     itens={props.times} 
+                    valor={time}
                     aoAlterado={valor => setTime(valor)}
                     />
                 <Botao>

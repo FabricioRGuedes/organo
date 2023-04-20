@@ -1,6 +1,6 @@
-import './CampoTexto.css'
+import './Campo.css'
 
-const CampoTexto = (props) => {
+const Campo = (props) => {
 
     const aoDigitar = (e) => {
         props.aoAlterado(e.target.value)
@@ -14,4 +14,4 @@ const CampoTexto = (props) => {
     )
 }
 
-export default CampoTexto
+export default Campo

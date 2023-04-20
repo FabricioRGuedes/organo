@@ -7,7 +7,7 @@ import Rodape from './componentes/Rodape/Index';
 
 function App() {
 
-  const times = [
+  const [times, setTimes] = useState([
     {
       nome: 'Front-End',
       corPrimaria: '#82CFFA',
@@ -38,9 +38,22 @@ function App() {
       corPrimaria: '#FF8A29',
       corSecundaria: '#FFEEDF',
     }
-  ]
+  ])
 
   const [colaboradores, setColaboradores] = useState([])
+
+  function deletarColaborador() {
+    console.log('Deletado')
+  }
+
+  function mudarCodDoTime(cor, nome) {
+    setTimes(times.map(time => {
+      if (time.nome === nome) {
+        time.corPrimaria = cor
+      }
+      return time;
+    }))
+  }
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
     setColaboradores([...colaboradores, colaborador])
@@ -51,13 +64,16 @@ function App() {
       <Banner />
       <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)} />
 
-      {times.map(time => <Time
-        key={time.nome}
-        nome={time.nome}
-        corPrimaria={time.corPrimaria}
-        corSecundaria={time.corSecundaria}
-        colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-      />)}
+      {times.map(time =>
+        <Time
+          key={time.nome}
+          nome={time.nome}
+          corPrimaria={time.corPrimaria}
+          corSecundaria={time.corSecundaria}
+          colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
+          aoDeletar={deletarColaborador}
+          mudarCor={mudarCodDoTime}
+        />)}
       <Rodape />
     </div>
   );

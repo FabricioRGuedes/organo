@@ -1,9 +1,10 @@
 import Colaborador from '../Colaborador'
 import './Time.css'
+import hexToRgba from 'hex-to-rgba'
 
 const Time = (props) => {
     return (
-        props.colaboradores.length > 0 && <section className='time' style={{ backgroundColor: props.corSecundaria }}>
+        props.colaboradores.length > 0 && <section className='time' style={{backgroundImage: "url(img/fundo.png)", backgroundColor: hexToRgba(props.corPrimaria, '0.5')}}>
             <input type="color"
                 className='input-cor'
                 value={props.corPrimaria}
@@ -19,6 +20,7 @@ const Time = (props) => {
                         cargo={colaborador.cargo}
                         imagem={colaborador.imagem}
                         aoDeletar={props.aoDeletar}
+
                     />)}
             </div>
         </section>

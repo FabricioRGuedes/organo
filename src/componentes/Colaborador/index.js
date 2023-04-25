@@ -9,7 +9,7 @@ const Colaborador = ({ corDeFundo, colaborador, aoDeletar}) => {
                 size={25}
                 onClick={() => aoDeletar(colaborador.id)}
             />
-            <div className='cabecalho' style={{ backgroundColor: corDeFundo.cor }}>
+            <div className='cabecalho' style={{ backgroundColor: corDeFundo }}>
                 <img src={colaborador.imagem} alt={colaborador.nome} />
             </div>
             <div className='rodape'>
